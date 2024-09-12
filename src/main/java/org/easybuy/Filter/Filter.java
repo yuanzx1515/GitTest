@@ -15,25 +15,21 @@ import org.easybuy.service.UserService;
 
 import java.io.IOException;
 
-@WebFilter("/Manage*")
+@WebFilter("/productview")
 public class Filter extends HttpFilter {
-    ManagerService managerService ;
+    UserService userService;
     @Override
     public void init() throws ServletException {
-        managerService = new ManagerService();
+       userService = new UserService();
     }
 
     @Override
     protected void doFilter(HttpServletRequest req, HttpServletResponse res, FilterChain chain) throws IOException, ServletException {
         HttpSession session = req.getSession();
         String username = (String) session.getAttribute("username");
-        boolean user = managerService.findUserByUsername(username);
-        if (!user){
-            res.sendRedirect(req.getContextPath() + "index");
-        }else {
-            chain.doFilter(req, res);
-        }
-
-
+      if (username == null) {
+          res.sendRedirect(req.getContextPath() + "/login");
+      }else
+          chain.doFilter(req, res);
     }
 }

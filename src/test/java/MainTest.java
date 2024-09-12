@@ -1,17 +1,16 @@
 import org.apache.ibatis.session.SqlSession;
 import org.easybuy.Util.MybatisUtil;
 import org.easybuy.entity.Guestbook;
-import org.easybuy.service.GuestbookService;
-import org.easybuy.service.ManagerService;
+import org.easybuy.entity.User;
+import org.easybuy.service.*;
 
 import java.util.List;
 
 public class MainTest {
     public static void main(String[] args) {
-      ManagerService managerService = new ManagerService();
-        boolean yuanzx = managerService.findUserByUsername("admin");
-        System.out.println(yuanzx);
-
+        OrderService orderService = new OrderService();
+        int i = orderService.insertOrder("yuanzx", 1, "15812937040", "爱丁堡",1,"小米su7");
+        System.out.println(i);
 
     }
     }

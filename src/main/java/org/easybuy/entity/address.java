@@ -9,4 +9,5 @@ public class address {
     String address_line;
     String phone;
     int A_id;
+    Integer Add_id;
 }

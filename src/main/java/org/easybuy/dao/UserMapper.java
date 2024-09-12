@@ -26,7 +26,9 @@ public interface UserMapper {
                    @Param("address") String address);
 
 
-    @Select("select U_id from  adress where username = #{username}")
-    User getUserByUsername(@Param("username") String username);
+
+        @Select("SELECT U_id FROM admin WHERE username = #{username}")
+        Integer getUserByUsername(String username);
+
 }
 
